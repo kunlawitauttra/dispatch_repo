@@ -1,19 +1,17 @@
-name: Dispatch Event Source
+name: Receive Dispatch Event
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types:
+      - my-custom-event
 
 jobs:
-  dispatch:
+  receive:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Dispatch Event
-        uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.DISPATCH_REPO_TOKEN }}
-          repository: dispatch_repo
-          event-type: my-custom-event
-          client-payload: ${{ toJson(github.event) }}
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Display Payload
+        run: echo "Received payload: ${{ toJson(github.event.client_payload) }}"
