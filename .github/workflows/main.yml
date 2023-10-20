@@ -2,9 +2,7 @@ name: Receive Dispatch Event
 
 on:
   repository_dispatch:
-    types:
-      [my-custom-event]
-
+    types: [my-custom-event]
 jobs:
   receive:
     runs-on: ubuntu-latest
