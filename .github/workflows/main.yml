@@ -3,7 +3,7 @@ name: Receive Dispatch Event
 on:
   repository_dispatch:
     types:
-      - my-custom-event
+      [my-custom-event]
 
 jobs:
   receive:
