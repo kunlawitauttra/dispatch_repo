@@ -14,5 +14,5 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Display Payload
-        run: echo "Received payload: ${{ toJSON(github.event.client_payload) }}"
+        run: echo "Received payload: ${{ toJson(github.event.client_payload) }}"
 
